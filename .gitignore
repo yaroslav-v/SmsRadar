@@ -50,8 +50,8 @@ Thumbs.db
 *.bak
  
 # gradle directory
-.gradle
-gradlew
-gradlew.bat
-gradle/
+#.gradle
+#gradlew
+#gradlew.bat
+#gradle/
 build/
