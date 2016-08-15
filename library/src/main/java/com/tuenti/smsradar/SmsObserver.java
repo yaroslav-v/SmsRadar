@@ -15,13 +15,15 @@
  */
 package com.tuenti.smsradar;
 
-
+import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-
+import android.support.v4.content.ContextCompat;
 
 /**
  * ContentObserver created to handle the sms content provider changes. This entity will be called each time the
@@ -47,11 +49,14 @@ class SmsObserver extends ContentObserver {
 	private static final String PROTOCOL_COLUM_NAME = "protocol";
 	private static final String SMS_ORDER = "date DESC";
 
-	private ContentResolver contentResolver;
-	private SmsCursorParser smsCursorParser;
+	private final Context context;
+	private final ContentResolver contentResolver;
+	private final SmsCursorParser smsCursorParser;
 
-	SmsObserver(ContentResolver contentResolver, Handler handler, SmsCursorParser smsCursorParser) {
+	SmsObserver(Context context, ContentResolver contentResolver, Handler handler,
+				SmsCursorParser smsCursorParser) {
 		super(handler);
+		this.context = context;
 		this.contentResolver = contentResolver;
 		this.smsCursorParser = smsCursorParser;
 	}
@@ -114,11 +119,17 @@ class SmsObserver extends ContentObserver {
 	}
 
 	private Cursor getSmsContentObserverCursor() {
-		String[] projection = null;
-		String selection = null;
-		String[] selectionArgs = null;
-		String sortOrder = null;
-		return contentResolver.query(SMS_URI, projection, selection, selectionArgs, sortOrder);
+		// check READ_SMS permission for Android 6+
+		if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_SMS)
+				!= PackageManager.PERMISSION_GRANTED) {
+			return null;
+		} else {
+			String[] projection = null;
+			String selection = null;
+			String[] selectionArgs = null;
+			String sortOrder = null;
+			return contentResolver.query(SMS_URI, projection, selection, selectionArgs, sortOrder);
+		}
 	}
 
 	private boolean isProtocolForOutgoingSms(String protocol) {

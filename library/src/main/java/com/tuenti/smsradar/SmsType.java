@@ -30,7 +30,7 @@ public enum SmsType {
 
 	UNKNOWN(-1),
 	RECEIVED(1),
-	SENT(2),;
+	SENT(2);
 
 	private final int value;
 
@@ -52,5 +52,4 @@ public enum SmsType {
 		}
 		throw new IllegalArgumentException("Invalid sms type: " + value);
 	}
-
 }
