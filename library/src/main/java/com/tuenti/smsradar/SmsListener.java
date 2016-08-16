@@ -24,14 +24,14 @@ package com.tuenti.smsradar;
 public interface SmsListener {
 
 	/**
-	 * Invoked when an incoming sms is intercepted.
+	 * Invoked when an outgoing sms is intercepted.
 	 *
-	 * @param sms intercepted.
+	 * @param sms
 	 */
 	public void onSmsSent(Sms sms);
 
 	/**
-	 * Invoked when an outgoing sms is intercepted.
+	 * Invoked when an incoming sms is intercepted.
 	 *
 	 * @param sms
 	 */

@@ -15,11 +15,9 @@
  */
 package com.tuenti.smsradar;
 
-
 import java.util.Date;
 
 import android.database.Cursor;
-
 
 /**
  * Works as cursor parser to get sms info from a cursor obtained from sms inbox/sent content provider.
@@ -54,7 +52,6 @@ class SmsCursorParser {
 	}
 
 	Sms parse(Cursor cursor) {
-
 		if (!canHandleCursor(cursor) || !cursor.moveToNext()) {
 			return null;
 		}
@@ -114,5 +111,4 @@ class SmsCursorParser {
 	private boolean canHandleCursor(Cursor cursor) {
 		return cursor != null && cursor.getCount() > 0;
 	}
-
 }

@@ -23,15 +23,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 
 /**
- * Service created to handle the SmsContentObserver registration. This service has the responsibility of register and
- * unregister the content observer in sms content provider when it's created and destroyed.
+ * Service created to handle the SmsContentObserver registration. This service has the
+ * responsibility of register and unregister the content observer in sms content provider when it's
+ * created and destroyed.
  * <p/>
- * The SmsContentObserver will be registered over the CONTENT_SMS_URI to be notified each time the system update the
- * sms content provider.
+ * The SmsContentObserver will be registered over the CONTENT_SMS_URI to be notified each time the
+ * system update the sms content provider.
  *
  * @author Pedro Vcente Gómez Sánchez <pgomez@tuenti.com>
  * @author Manuel Peinado <mpeinado@tuenti.com>
@@ -126,7 +128,12 @@ public class SmsRadarService extends Service {
         Intent intent = new Intent(this, SmsRadarService.class);
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
         long now = getTimeProvider().getDate().getTime();
-        getAlarmManager().set(AlarmManager.RTC_WAKEUP, now + ONE_SECOND, pendingIntent);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            getAlarmManager().setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, now + ONE_SECOND,
+                    pendingIntent);
+        } else {
+            getAlarmManager().set(AlarmManager.RTC_WAKEUP, now + ONE_SECOND, pendingIntent);
+        }
     }
 
     private TimeProvider getTimeProvider() {

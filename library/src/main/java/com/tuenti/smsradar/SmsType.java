@@ -19,7 +19,7 @@ package com.tuenti.smsradar;
  * Represents the SmsType.
  * <p/>
  * RECEIVED SmsType is the equivalent to MT in a telco terminology.
- * SENT SmsType is the equivalent to MO in a telco terminology.
+ * OUTGOING SmsType is the equivalent to MO in a telco terminology.
  * <p/>
  * Review GSM short message service to get more information: http://en.wikipedia.org/wiki/Short_Message_Service
  *

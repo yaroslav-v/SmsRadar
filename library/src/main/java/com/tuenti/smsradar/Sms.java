@@ -32,7 +32,6 @@ public class Sms {
 	private final String msg;
 	private final SmsType type;
 
-
 	public Sms(String address, String date, String msg, SmsType type) {
 		this.address = address;
 		this.date = date;

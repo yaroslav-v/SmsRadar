@@ -1,5 +1,7 @@
-SMS Radar [![Build Status](https://travis-ci.org/tuenti/SmsRadar.svg?branch=master)](https://travis-ci.org/tuenti/SmsRadar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tuenti.smsradar/library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.tuenti.smsradar/library) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SmsRadar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1328)
+SMS Radar [![Build Status](https://travis-ci.org/tuenti/SmsRadar.svg?branch=master)](https://travis-ci.org/tuenti/SmsRadar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tuenti.smsradar/library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.tuenti.smsradar/library) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SmsRadar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1328) [![Release](https://img.shields.io/github/release/yaroslav-v/SmsRadar.svg?label=JitPack)](https://jitpack.io/#yaroslav-v/SmsRadar) [![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=9)
 =========
+
+**NB!** This fork is updated to support API 23 permission restrictions.
 
 Read incoming and outgoing text messages using an Android application across different Android SDK versions it's not
 trivial. If yo don't want to appear as SMS application and your application has to read incoming and outgoing SMSs
@@ -21,6 +23,26 @@ The SMS information provided on ``SmsListener`` methods is:
 
 This library works on Android 2.X or higher versions.
 
+Download (updated JitPack version)
+----------------------------------
+
+Step 1. Add the JitPack repository to your build file.
+```
+repositories {
+    // ...
+    maven { url "https://jitpack.io" }
+}
+```
+
+Step 2. Add the dependency.
+```
+dependencies {
+    compile 'com.github.yaroslav-v:SmsRadar:1.0.9'
+}
+```
+
+That's it! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts. 
+
 Download
 --------
 
@@ -36,14 +58,12 @@ Or declare it into your pom.xml
 </dependency>
 ```
 
-
 Or into your build.gradle
 ```groovy
 dependencies{
     compile 'com.tuenti.smsradar:library:1.0.4'
 }
 ```
-
 
 Usage
 -----
