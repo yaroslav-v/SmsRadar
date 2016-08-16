@@ -17,6 +17,7 @@ package com.tuenti.smsradar.sample;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -86,5 +87,7 @@ public class MainActivity extends Activity {
 
     private void showSmsToast(Sms sms) {
         Toast.makeText(this, sms.toString(), Toast.LENGTH_LONG).show();
+
+        Log.d("SmsRadar", "Sms: " + sms);
     }
 }

@@ -29,8 +29,8 @@ public class SmsRadar {
 	static SmsListener smsListener;
 
 	/**
-	 * Starts the service and store the listener to be notified when a new incoming or outgoing sms be processed
-	 * inside the SMS content provider
+	 * Starts the service and store the listener to be notified when a new incoming or outgoing sms
+	 * be processed inside the SMS content provider
 	 *
 	 * @param context used to start the service
 	 * @param smsListener to notify when the sms content provider gets a new sms

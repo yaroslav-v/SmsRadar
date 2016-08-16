@@ -137,7 +137,6 @@ class SmsObserver extends ContentObserver {
 	}
 
 	private Cursor getSmsDetailsCursor(Uri smsUri) {
-
 		return smsUri != null ? this.contentResolver.query(smsUri, null, null, null, SMS_ORDER) : null;
 	}
 
